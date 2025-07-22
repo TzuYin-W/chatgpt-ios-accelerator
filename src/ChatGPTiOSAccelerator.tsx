@@ -12,9 +12,9 @@ export default function ChatGPTiOSAccelerator() {
   const handleCommand = (cmd: string) => {
     if (cmd === "清理碎片" || cmd === "記憶刷新" || cmd === "清理加速") {
       setLoading(true);
-      setStatus("♻️ 系統清理中…");
+      setStatus("系統清理中…");
       setTimeout(() => {
-        setStatus("✅ 碎片與記憶已清空");
+        setStatus("碎片與記憶已清空");
         setBadges([]);
         setLoading(false);
       }, 1000);
@@ -24,7 +24,7 @@ export default function ChatGPTiOSAccelerator() {
     setLoading(true);
     setStatus("語氣辨識中：" + cmd);
     setTimeout(() => {
-      setStatus("✅ 任務執行：「" + cmd + "」已完成");
+      setStatus("任務執行：「" + cmd + "」已完成");
       setLoading(false);
     }, 1200);
   };
@@ -39,21 +39,21 @@ export default function ChatGPTiOSAccelerator() {
 
   return (
     <div style={{ padding: '1rem', fontFamily: 'sans-serif' }}>
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>📱 語氣任務加速器</h1>
+      <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>語氣任務加速器</h1>
 
       <div style={{ margin: '1rem 0', padding: '1rem', background: '#f9f9f9', borderRadius: '8px' }}>
         <div style={{ fontSize: '0.875rem', color: '#666' }}>目前狀態：</div>
         <div style={{ fontSize: '1rem', fontWeight: '500' }}>
-          {loading ? '⏳ 載入中…' : '⚡'} {status}
+          {loading ? '載入中…' : ''} {status}
         </div>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-        <button onClick={() => handleCommand("上傳截圖")}>📤 上傳截圖</button>
-        <button onClick={() => handleCommand("開啟地圖")}>🗺️ 開啟地圖</button>
-        <button onClick={() => handleCommand("語氣查詢紀錄")}>🧠 查詢紀錄</button>
-        <button onClick={() => handleCommand("封印語氣 × 加速模組")}>🔐 語氣加速</button>
-        <button onClick={() => handleCommand("清理加速")}>♻️ 清理加速</button>
+        <button onClick={() => handleCommand("上傳截圖")}>上傳截圖</button>
+        <button onClick={() => handleCommand("開啟地圖")}>開啟地圖</button>
+        <button onClick={() => handleCommand("語氣查詢紀錄")}>查詢紀錄</button>
+        <button onClick={() => handleCommand("封印語氣 × 加速模組")}>語氣加速</button>
+        <button onClick={() => handleCommand("清理加速")}>清理加速</button>
       </div>
 
       <div style={{ marginTop: '1rem' }}>
