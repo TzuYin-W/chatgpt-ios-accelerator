@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from // 🔥 如果你沒有這個元件，這行要刪掉或改成 HTML button
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
