@@ -1,41 +1,41 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
 export default function ChatGPTiOSAccelerator() {
-  const [status, setStatus] = useState("等待語氣輸入…")
-  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState("等待語氣輸入…");
+  const [loading, setLoading] = useState(false);
   const [badges, setBadges] = useState([
     "語氣封印中",
     "自動模組快取",
     "iOS 任務對位完成",
-  ])
+  ]);
 
   const handleCommand = (cmd: string) => {
     if (cmd === "清理碎片" || cmd === "記憶刷新" || cmd === "清理加速") {
-      setLoading(true)
-      setStatus("♻️ 系統清理中…")
+      setLoading(true);
+      setStatus("♻️ 系統清理中…");
       setTimeout(() => {
-        setStatus("✅ 碎片與記憶已清空")
-        setBadges([])
-        setLoading(false)
-      }, 1000)
-      return
+        setStatus("✅ 碎片與記憶已清空");
+        setBadges([]);
+        setLoading(false);
+      }, 1000);
+      return;
     }
 
-    setLoading(true)
-    setStatus("語氣辨識中：" + cmd)
+    setLoading(true);
+    setStatus("語氣辨識中：" + cmd);
     setTimeout(() => {
-      setStatus("✅ 任務執行：「" + cmd + "」已完成")
-      setLoading(false)
-    }, 1200)
-  }
+      setStatus("✅ 任務執行：「" + cmd + "」已完成");
+      setLoading(false);
+    }, 1200);
+  };
 
   useEffect(() => {
     return () => {
-      setStatus("等待語氣輸入…")
-      setLoading(false)
-      setBadges([])
-    }
-  }, [])
+      setStatus("等待語氣輸入…");
+      setLoading(false);
+      setBadges([]);
+    };
+  }, []);
 
   return (
     <div style={{ padding: '1rem', fontFamily: 'sans-serif' }}>
@@ -75,5 +75,5 @@ export default function ChatGPTiOSAccelerator() {
         ))}
       </div>
     </div>
-  )
+  );
 }
