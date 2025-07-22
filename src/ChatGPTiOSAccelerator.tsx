@@ -1,9 +1,4 @@
 import { useState, useEffect } from "react"
-import { Button } from // 🔥 如果你沒有這個元件，這行要刪掉或改成 HTML button
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Sparkles, Mic, Upload, Zap, Loader2, RefreshCcw } from "lucide-react"
 
 export default function ChatGPTiOSAccelerator() {
   const [status, setStatus] = useState("等待語氣輸入…")
@@ -43,35 +38,28 @@ export default function ChatGPTiOSAccelerator() {
   }, [])
 
   return (
-    <div className="p-6 flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">📱 語氣任務加速器</h1>
+    <div style={{ padding: '1rem', fontFamily: 'sans-serif' }}>
+      <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>📱 語氣任務加速器</h1>
 
-      <Card className="bg-white/80 shadow-xl">
-        <CardContent className="p-4 flex flex-col gap-2">
-          <div className="text-sm text-muted-foreground">目前狀態：</div>
-          <div className="text-lg font-medium">
-            {loading ? (
-              <Loader2 className="animate-spin inline-block mr-2" />
-            ) : (
-              <Zap className="inline-block mr-2" />
-            )}
-            {status}
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="grid grid-cols-2 gap-3">
-        <Button onClick={() => handleCommand("上傳截圖")}>📤 上傳截圖</Button>
-        <Button onClick={() => handleCommand("開啟地圖")}>🗺️ 開啟地圖</Button>
-        <Button onClick={() => handleCommand("語氣查詢紀錄")}>🧠 查詢紀錄</Button>
-        <Button onClick={() => handleCommand("封印語氣 × 加速模組")}>🔐 語氣加速</Button>
-        <Button onClick={() => handleCommand("清理加速")}>♻️ 清理加速</Button>
+      <div style={{ margin: '1rem 0', padding: '1rem', background: '#f9f9f9', borderRadius: '8px' }}>
+        <div style={{ fontSize: '0.875rem', color: '#666' }}>目前狀態：</div>
+        <div style={{ fontSize: '1rem', fontWeight: '500' }}>
+          {loading ? '⏳ 載入中…' : '⚡'} {status}
+        </div>
       </div>
 
-      <div className="flex gap-2 items-center">
-        <Mic className="text-muted-foreground" />
-        <Input
-          placeholder="請以語氣輸入：如『幫我找圖片』、『太慢了』"
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+        <button onClick={() => handleCommand("上傳截圖")}>📤 上傳截圖</button>
+        <button onClick={() => handleCommand("開啟地圖")}>🗺️ 開啟地圖</button>
+        <button onClick={() => handleCommand("語氣查詢紀錄")}>🧠 查詢紀錄</button>
+        <button onClick={() => handleCommand("封印語氣 × 加速模組")}>🔐 語氣加速</button>
+        <button onClick={() => handleCommand("清理加速")}>♻️ 清理加速</button>
+      </div>
+
+      <div style={{ marginTop: '1rem' }}>
+        <input
+          placeholder="請輸入語氣指令，例如『幫我找圖片』"
+          style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
           onKeyDown={(e) => {
             if (e.key === "Enter")
               handleCommand((e.target as HTMLInputElement).value)
@@ -79,11 +67,11 @@ export default function ChatGPTiOSAccelerator() {
         />
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div style={{ marginTop: '1rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
         {badges.map((badge, i) => (
-          <Badge key={i} variant={badge === "自動模組快取" ? "default" : "outline"}>
+          <span key={i} style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '0.25rem 0.5rem' }}>
             {badge}
-          </Badge>
+          </span>
         ))}
       </div>
     </div>
